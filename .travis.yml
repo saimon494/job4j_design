@@ -1,5 +1,7 @@
 # используем язык java. Travis CI поддерживает другие языки тоже.
 language: java
+script:
+  - mvn test -B
 
 jdk:
   - oraclejdk14
