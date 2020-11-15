@@ -7,14 +7,18 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="chapter_001" />
-        <module name="сhapter_004" />
-        <module name="сhapter_005" />
-        <module name="сhapter_002" />
-        <module name="сhapter_003" />
+        <module name="chapter_005" />
+        <module name="chapter_004" />
+        <module name="chapter_003" />
+        <module name="chapter_002" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="chapter_001" target="14" />
+      <module name="chapter_002" target="14" />
+      <module name="chapter_003" target="14" />
+      <module name="chapter_004" target="14" />
+      <module name="chapter_005" target="14" />
       <module name="job4j_design" target="14" />
       <module name="сhapter_002" target="14" />
       <module name="сhapter_003" target="14" />
