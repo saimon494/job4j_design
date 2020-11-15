@@ -2,8 +2,6 @@
 language: java
 exclude:
   -ant
-before_install:
-  - cd java
 
 # используем режим обычного пользователя для сборки проекта.
 sudo: false
