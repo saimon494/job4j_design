@@ -24,7 +24,9 @@ public class SimpleArray<T> implements Iterable<T> {
 
     public void remove(int index) {
         Objects.checkIndex(index, this.index);
-        System.arraycopy(objects, index + 1, objects, index, this.index - index - 1);
+        objects[index] = null;
+        this.index--;
+        System.arraycopy(objects, index + 1, objects, index, this.index - index);
     }
 
     public T get(int index) {
