@@ -6,16 +6,31 @@ import java.util.NoSuchElementException;
 public class ForwardLinked<T> implements Iterable<T> {
     private Node<T> head;
     private Node<T> last;
+    private int size = 0;
+
+    private static class Node<T> {
+        private T value;
+        private Node<T> next;
+        private Node<T> prev;
+
+        public Node(Node<T> prev, T value, Node<T> next) {
+            this.prev = prev;
+            this.value = value;
+            this.next = next;
+        }
+    }
 
     public void add(T value) {
         Node<T> node = new Node<T>(last, value, null);
         if (head == null) {
             head = node;
             last = node;
+            size++;
             return;
         }
         last.next = node;
         last = node;
+        size++;
     }
 
     public T deleteFirst() {
@@ -24,6 +39,7 @@ public class ForwardLinked<T> implements Iterable<T> {
         }
         T rsl = head.value;
         head = head.next;
+        size--;
         return rsl;
     }
 
@@ -40,7 +56,25 @@ public class ForwardLinked<T> implements Iterable<T> {
             node.prev = null;
             last.next = null;
         }
+        size--;
         return node.value;
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    public void revert() {
+        Node<T> prev = null;
+        Node<T> current = head;
+        Node<T> next;
+        while (current != null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        head = prev;
     }
 
     @Override
@@ -63,30 +97,5 @@ public class ForwardLinked<T> implements Iterable<T> {
                 return value;
             }
         };
-    }
-
-    public void revert() {
-        Node<T> prev = null;
-        Node<T> current = head;
-        Node<T> next;
-        while (current != null) {
-            next = current.next;
-            current.next = prev;
-            prev = current;
-            current = next;
-        }
-        head = prev;
-    }
-
-    private static class Node<T> {
-        private T value;
-        private Node<T> next;
-        private Node<T> prev;
-
-        public Node(Node<T> prev, T value, Node<T> next) {
-            this.prev = prev;
-            this.value = value;
-            this.next = next;
-        }
     }
 }
