@@ -2,7 +2,7 @@ package ru.job4j.collection;
 
 import java.util.*;
 
-public class SimpleArray<T> implements Iterable {
+public class SimpleArray<T> implements Iterable<T> {
 
     private Object[] container;
     private int size = 1;
