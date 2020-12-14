@@ -56,12 +56,8 @@ public class SimpleHashMap<K, V> implements Iterable {
 
     public boolean insert(K key, V value) {
         boolean result = true;
-        if (key == null) {
+        if (Objects.equals(key, null)) {
             putForNullKey(value);
-        } else if (size == 0) {
-            int hash = SimpleHashMap.hash(key);
-            int index = SimpleHashMap.indexFor(hash, table.length);
-            addNode(hash, key, value, index);
         } else {
             int hash = SimpleHashMap.hash(key);
             int index = SimpleHashMap.indexFor(hash, table.length);
@@ -131,12 +127,8 @@ public class SimpleHashMap<K, V> implements Iterable {
             index = indexFor(key.hashCode(), table.length);
         }
         if (table[index] != null) {
-
-            if (table[index].getKey() == null) {
+            if (Objects.equals(table[index].getKey(), key)) {
                 return table[index].getValue();
-            }
-            if (table[index].getKey().equals(key)) {
-                return  table[index].getValue();
             }
         }
         return null;
@@ -151,7 +143,7 @@ public class SimpleHashMap<K, V> implements Iterable {
             index = indexFor(key.hashCode(), table.length);
         }
         if (table[index] != null) {
-            if (table[index].getKey().equals(key)) {
+            if (Objects.equals(table[index].getKey(), key)) {
                 table[index] = null;
                 size--;
                 result = true;
