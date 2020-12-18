@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 
 public class TreeTest {
     @Test
-    public void when6ElFindLastThen6() {
+    public void whenAdd() {
         Tree<Integer> tree = new Tree<>(1);
         tree.add(1, 2);
         tree.add(1, 3);
@@ -21,7 +21,7 @@ public class TreeTest {
     }
 
     @Test
-    public void when6ElFindNotExitThenOptionEmpty() {
+    public void whenNotFind() {
         Tree<Integer> tree = new Tree<>(1);
         tree.add(1, 2);
         assertThat(
