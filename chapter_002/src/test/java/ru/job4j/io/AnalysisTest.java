@@ -10,14 +10,13 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class AnalysisTest {
-    String source = "./data/server.log";
-    String target = "./data/unavailable.csv";
-
     @Rule
     public TemporaryFolder folder = new TemporaryFolder();
 
     @Test
     public void analysisServerLog() throws IOException {
+        String source = "./data/server.log";
+        String target = "./data/unavailable.csv";
         try (PrintWriter out = new PrintWriter(source)) {
             out.println("200 10:56:01");
             out.println("500 10:57:01");
