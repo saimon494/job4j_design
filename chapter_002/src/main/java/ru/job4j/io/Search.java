@@ -14,6 +14,10 @@ public class Search {
     }
 
     public static void main(String[] args) throws IOException {
+        if (args.length < 2) {
+            throw new IllegalArgumentException("Root folder or extension is null. "
+                    + "Use java -jar search.jar ROOT_FOLDER EXTENSION");
+        }
         Path start = Paths.get("chapter_002");
         search(start, "xml").forEach(System.out::println);
     }
