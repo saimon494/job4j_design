@@ -7,7 +7,11 @@ public class ArgsName {
     private final Map<String, String> values = new HashMap<>();
 
     public String get(String key) {
-        return values.get(key);
+        String rsl = values.get(key);
+        if (rsl == null) {
+            throw new IllegalArgumentException("Parameter -" + key + " not set");
+        }
+        return rsl;
     }
 
     private void parse(String[] args) {
@@ -15,9 +19,9 @@ public class ArgsName {
             throw new IllegalArgumentException(
                     "No args");
         }
-        for (String line : args) {
-            String[] words = line.split("=");
-            if (args.length < 2) {
+        for (String arg : args) {
+            String[] words = arg.split("=");
+            if (words.length != 2) {
                 throw new IllegalArgumentException(
                         "Not enough args");
             }
