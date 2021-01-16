@@ -3,9 +3,7 @@ package ru.job4j.io;
 import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class ConsoleChat {
     private static final String OUT = "закончить";
@@ -16,6 +14,7 @@ public class ConsoleChat {
     private final String botAnswers;
     private final Map<Integer, String> textMap = new HashMap<>();
     private int count = 0;
+    private final List<String> log = new ArrayList<>();
 
     public ConsoleChat(String path, String botAnswers) {
         this.path = path;
@@ -35,11 +34,13 @@ public class ConsoleChat {
         }
     }
 
-    private void writeLog(String word) {
-        try (BufferedWriter writer = new BufferedWriter(
-                new FileWriter(path, CHARSET, true))) {
-            writer.write(word + "\n");
-        } catch (IOException e) {
+    private void writeLog(List<String> log, String file) {
+        try (PrintWriter out = new PrintWriter(
+                new OutputStreamWriter(
+                        new FileOutputStream(file), CHARSET
+                ))) {
+            log.forEach(out::println);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -52,14 +53,14 @@ public class ConsoleChat {
         try (Scanner scanner = new Scanner(System.in)) {
             while (!OUT.equals(word)) {
                 word = scanner.nextLine();
-                writeLog(word);
+                log.add(word);
                 if (!STOP.equals(word)
                         && !OUT.equals(word)
                         && checkAnswer || CONTINUE.equals(word)) {
                     int numAnswer = (int) (Math.random() * count);
                     String answer = textMap.get(numAnswer);
                     System.out.println(answer);
-                    writeLog(answer);
+                    log.add(answer);
                 } else {
                     checkAnswer = false;
                 }
@@ -68,6 +69,7 @@ public class ConsoleChat {
                 }
             }
         }
+        writeLog(log, path);
     }
 
     public static void main(String[] args) {
