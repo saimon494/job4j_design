@@ -33,7 +33,7 @@ public class EchoServer {
                         }
                         System.out.println(str);
                     }
-                    out.write("HTTP/1.1 200 OK\r\n".getBytes());
+                    out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
                     if (!answer.isEmpty()) {
                         out.write((answer + "\r\n").getBytes());
                     }
