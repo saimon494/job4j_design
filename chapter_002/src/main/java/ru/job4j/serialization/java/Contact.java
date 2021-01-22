@@ -2,8 +2,6 @@ package ru.job4j.serialization.java;
 
 import java.io.*;
 import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.StringJoiner;
 
 public class Contact implements Serializable {
     private static final long serialVersionUID = 1L;
