@@ -2,8 +2,12 @@ package ru.job4j.serialization.json;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Phone {
     private final String name;
@@ -20,6 +24,18 @@ public class Phone {
         this.options = options;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public boolean isNfc() {
+        return nfc;
+    }
+
+    public int getRam() {
+        return ram;
+    }
+
     @Override
     public String toString() {
         return "Phone{" +
@@ -33,6 +49,20 @@ public class Phone {
 
     public static void main(String[] args) {
         final Phone phone = new Phone("Xiaomi", true, 4, new Cpu("Snapdragon"), "wifi", "gps");
+
+        JSONObject jsonCpu = new JSONObject("{\"name\":\"Snapdragon\"}");
+        List<String> list = new ArrayList<>();
+        list.add("wifi");
+        list.add("gps");
+        JSONArray jsonOptions = new JSONArray(list);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("name", phone.getName());
+        jsonObject.put("nfc", phone.isNfc());
+        jsonObject.put("ram", phone.getRam());
+        jsonObject.put("cpu", jsonCpu);
+        jsonObject.put("options", jsonOptions);
+        System.out.println(jsonObject.toString());
+        System.out.println(new JSONObject(phone).toString());
 
         final Gson gson = new GsonBuilder().create();
         System.out.println(gson.toJson(phone));
