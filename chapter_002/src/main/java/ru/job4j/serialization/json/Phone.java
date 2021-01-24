@@ -62,7 +62,11 @@ public class Phone {
         jsonObject.put("cpu", jsonCpu);
         jsonObject.put("options", jsonOptions);
         System.out.println(jsonObject.toString());
-        System.out.println(new JSONObject(phone).toString());
+
+        final JSONObject jsonObject1 = new JSONObject(phone);
+        jsonObject1.put("options", new JSONArray(phone.options));
+        jsonObject1.put("cpu", jsonCpu);
+        System.out.println(jsonObject1.toString());
 
         final Gson gson = new GsonBuilder().create();
         System.out.println(gson.toJson(phone));
