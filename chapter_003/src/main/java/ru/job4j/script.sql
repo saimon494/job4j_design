@@ -59,3 +59,7 @@ select name, speciality from students where course >= 3;
 select id, name from students where name like '%H';
 select name, course, enroll_date from students where enroll_date = date '2017-09-01' or course = 2 order by name;
 select distinct speciality from students limit 10;
+
+select * from students as s join universities as u on s.university_id = u.id;
+select s.name, s.course, u.name from students as s join universities as u on s.university_id = u.id;
+select s.name as student, u.name as university from students as s join universities as u on s.university_id = u.id;
