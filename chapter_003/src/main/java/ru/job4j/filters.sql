@@ -39,7 +39,7 @@ select * from product;
 select p.name, t.name
 from product p
          join type t on p.type_id = t.id
-where type_id = 1;
+where t.name = 'Сыр';
 -- все продукты, у кого в имени есть слово "мороженное"
 select p.name
 from product p
@@ -49,10 +49,11 @@ where p.name like '%Мороженое%';
 select p.name, t.name, p.expired_date
 from product p
          join type t on p.type_id = t.id
-where p.expired_date < '2021-03-01';
+where p.expired_date < current_date + 31;
 -- самый дорогой продукт
-select max(price) as max_price
-from product;
+select name, price as max_price
+from product
+where price = (select max(price) from product);
 -- количество всех продуктов определенного типа
 select t.name, count(t.name)
 from type t
