@@ -49,7 +49,7 @@ where p.name like '%Мороженое%';
 select p.name, t.name, p.expired_date
 from product p
          join type t on p.type_id = t.id
-where date_part('month', expired_date) = date_part('month', now()) + 1;;
+where date_part('month', expired_date) = date_part('month', now() + interval '1 month');
 -- самый дорогой продукт
 select name, price as max_price
 from product
