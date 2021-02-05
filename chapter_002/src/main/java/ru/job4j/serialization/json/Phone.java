@@ -38,13 +38,13 @@ public class Phone {
 
     @Override
     public String toString() {
-        return "Phone{" +
-                "name='" + name + '\'' +
-                ", nfc=" + nfc +
-                ", ram=" + ram +
-                ", cpu=" + cpu +
-                ", options=" + Arrays.toString(options) +
-                '}';
+        return "Phone{"
+                + "name='" + name + '\''
+                + ", nfc=" + nfc
+                + ", ram=" + ram
+                + ", cpu=" + cpu
+                + ", options=" + Arrays.toString(options)
+                + '}';
     }
 
     public static void main(String[] args) {

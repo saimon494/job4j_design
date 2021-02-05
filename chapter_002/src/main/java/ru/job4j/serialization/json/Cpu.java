@@ -9,8 +9,8 @@ public class Cpu {
 
     @Override
     public String toString() {
-        return "Cpu{" +
-                "name='" + name + '\'' +
-                '}';
+        return "Cpu{"
+                + "name='" + name + '\''
+                + '}';
     }
 }
