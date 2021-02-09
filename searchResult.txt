@@ -1,0 +1,3 @@
+c:\projects\job4j_design\.idea\checkstyleidea-libs\readme.txt
+c:\projects\job4j_elementary\.idea\checkstyleidea-libs\readme.txt
+c:\projects\leetcode\.idea\checkstyleidea-libs\readme.txt
