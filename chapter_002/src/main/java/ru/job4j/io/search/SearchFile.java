@@ -51,7 +51,7 @@ public class SearchFile {
                 new BufferedWriter(
                         new FileWriter(file)))) {
             for (File fileFrom: fileList) {
-                printWriter.write(fileFrom.toString() + "\n");
+                printWriter.println(fileFrom);
             }
         } catch (IOException e) {
             e.printStackTrace();
