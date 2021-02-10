@@ -41,3 +41,8 @@ create table attachs(
                         name varchar(255),
                         item_id int references item(id)
 );
+create table cities(
+                       id serial primary key,
+                       name text,
+                       population int
+);
