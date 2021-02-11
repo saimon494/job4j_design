@@ -21,37 +21,36 @@ public class TableEditor implements AutoCloseable {
     }
 
     private void execute(String sql) throws SQLException {
-        Statement statement = connection.createStatement();
-        statement.execute(sql);
+        try (Statement statement = connection.createStatement()) {
+            statement.execute(sql);
+        }
     }
 
     public void createTable(String tableName) throws SQLException {
-        String sql = "create table if not exists " + tableName + "();";
+        String sql = String.format("create table if not exists %s();", tableName);
         execute(sql);
     }
 
     public void dropTable(String tableName) throws SQLException {
-        String sql = "DROP TABLE IF EXISTS " + tableName;
+        String sql = String.format("DROP TABLE IF EXISTS %s", tableName);
         execute(sql);
     }
 
     public void addColumn(String tableName, String columnName, String type) throws SQLException {
-        String sql = "ALTER TABLE " + tableName + " ADD COLUMN " + columnName + " " + type + ";";
+        String sql = String.format("ALTER TABLE %s ADD COLUMN %s %s;", tableName, columnName, type);
         execute(sql);
     }
 
     public void dropColumn(String tableName, String columnName) throws SQLException {
-        String sql = "ALTER TABLE " + tableName + " DROP COLUMN " + columnName + ";";
+        String sql = String.format("ALTER TABLE %s DROP COLUMN %s;", tableName, columnName);
         execute(sql);
     }
 
     public void renameColumn(String tableName,
                              String columnName,
                              String newColumnName) throws SQLException {
-        String sql = "ALTER TABLE "
-                + tableName + " RENAME COLUMN "
-                + columnName + " TO "
-                + newColumnName + ";";
+        String sql = String.format("ALTER TABLE %s RENAME COLUMN %s TO %s;",
+                tableName, columnName, newColumnName);
         execute(sql);
     }
 
