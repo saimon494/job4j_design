@@ -29,7 +29,8 @@ public class TableEditorTest {
             expected.append(String.format("%-15s %-15s%n", "price", "int4"));
             assertThat(tableEditor.getScheme("test_table"), is(expected.toString()));
             tableEditor.dropTable("test_table");
-            assertThat(tableEditor.getScheme("test_table"), is(String.format("%-15s %-15s%n", "column", "type")));
+            assertThat(tableEditor.getScheme("test_table"),
+                    is(String.format("%-15s %-15s%n", "column", "type")));
         }
     }
 }
