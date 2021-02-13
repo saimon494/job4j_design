@@ -46,3 +46,7 @@ create table cities(
                        name text,
                        population int
 );
+create table users(
+                      name varchar(255),
+                      email varchar(255)
+);
