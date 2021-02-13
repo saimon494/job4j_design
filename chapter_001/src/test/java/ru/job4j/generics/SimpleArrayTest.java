@@ -5,7 +5,7 @@ import org.junit.Test;
 import java.util.Iterator;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class SimpleArrayTest {
     private SimpleArray<Integer> array = new SimpleArray(3);

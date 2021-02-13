@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.util.Properties;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class TableEditorTest {
     @Test
