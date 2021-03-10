@@ -18,7 +18,7 @@ public class Cache {
         this.path = path;
     }
 
-    public void get(String key) throws IOException {
+    public String get(String key) throws IOException {
         String rsl;
         SoftReference<String> softRef = cache.get(key);
         if (softRef != null) {
@@ -27,7 +27,7 @@ public class Cache {
             rsl = readFile(key);
             add(key);
         }
-        System.out.println(rsl);
+        return rsl;
     }
 
     private void add(String fileName) throws IOException {
@@ -53,8 +53,8 @@ public class Cache {
         String path = "./chapter_004/src/main/resources";
         Cache cache = new Cache(path);
         String file1 = "Names.txt";
-        cache.get(file1);
+        System.out.println(cache.get(file1));
         String file2 = "Address.txt";
-        cache.get(file2);
+        System.out.println(cache.get(file2));
     }
 }
