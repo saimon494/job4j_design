@@ -20,33 +20,23 @@ public class Cache {
 
     public String get(String key) throws IOException {
         String rsl;
-        SoftReference<String> softRef = cache.get(key);
-        if (softRef != null) {
-            rsl = softRef.get();
-        } else {
+        if (!cache.containsKey(key) || cache.get(key).get() == null) {
             rsl = readFile(key);
-            add(key);
+            SoftReference<String> softRef = new SoftReference<>(rsl);
+            cache.put(key, softRef);
+        } else {
+            rsl = cache.get(key).get();
         }
         return rsl;
-    }
-
-    private void add(String fileName) throws IOException {
-        String rsl = readFile(fileName);
-        if (rsl != null) {
-            SoftReference<String> softRef = new SoftReference<>(rsl);
-            cache.put(fileName, softRef);
-        }
     }
 
     private String readFile(String fileName) throws IOException {
-        String rsl;
+        StringJoiner stringJoiner = new StringJoiner(System.lineSeparator());
         try (BufferedReader reader = new BufferedReader(new FileReader(path + "/" + fileName))) {
-            StringJoiner stringJoiner = new StringJoiner(System.lineSeparator());
             reader.lines()
                     .forEach(stringJoiner::add);
-            rsl = stringJoiner.toString();
         }
-        return rsl;
+        return stringJoiner.toString();
     }
 
     public static void main(String[] args) throws IOException {
