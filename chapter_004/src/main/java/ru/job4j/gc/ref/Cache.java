@@ -19,13 +19,13 @@ public class Cache {
     }
 
     public String get(String key) throws IOException {
-        String rsl;
-        if (!cache.containsKey(key) || cache.get(key).get() == null) {
-            rsl = readFile(key);
-            SoftReference<String> softRef = new SoftReference<>(rsl);
-            cache.put(key, softRef);
-        } else {
+        String rsl = "";
+        if (cache.containsKey(key)) {
             rsl = cache.get(key).get();
+        }
+        if (rsl == null || rsl.isEmpty() || !cache.containsKey(key)) {
+            rsl = readFile(key);
+            cache.put(key, new SoftReference<>(rsl));
         }
         return rsl;
     }
@@ -45,6 +45,8 @@ public class Cache {
         String file1 = "Names.txt";
         System.out.println(cache.get(file1));
         String file2 = "Address.txt";
+        System.out.println(cache.get(file2));
+        System.out.println(cache.get(file1));
         System.out.println(cache.get(file2));
     }
 }
