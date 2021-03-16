@@ -83,4 +83,46 @@ public class ReportEngineTest {
                 .append(System.lineSeparator());
         assertThat(engine.generate(em -> true), is(expect.toString()));
     }
+
+    @Test
+    public void whenXmlGenerated() {
+        MemStore store = new MemStore();
+        Calendar now = Calendar.getInstance();
+        Employee worker = new Employee("Ivan", now, now, 100);
+        store.add(worker);
+        Report engine = new ReportXml(store);
+        StringBuilder expect = new StringBuilder()
+                .append("<Employees>")
+                .append("<Employee>")
+                .append("<Name>").append(worker.getName())
+                .append("</Name>")
+                .append("<Hired>").append(worker.getHired())
+                .append("</Hired>")
+                .append("<Fired>").append(worker.getFired())
+                .append("</Fired>")
+                .append("<Salary>").append(worker.getSalary())
+                .append("</Salary>")
+                .append("</Employee>")
+                .append("</Employees>");
+        assertThat(engine.generate(em -> true), is(expect.toString()));
+    }
+
+    @Test
+    public void whenJsonGenerated() {
+        MemStore store = new MemStore();
+        Calendar now = Calendar.getInstance();
+        Employee worker = new Employee("Ivan", now, now, 100);
+        store.add(worker);
+        Report engine = new ReportJson(store);
+        StringBuilder expect = new StringBuilder()
+                .append("{\n")
+                .append("\"employee\":{\n")
+                .append("\"name\":\"").append(worker.getName())
+                .append("\",\n\"hired\":\"").append(worker.getHired())
+                .append("\",\n\"fired\":\"").append(worker.getFired())
+                .append("\",\n\"salary\":\"").append(worker.getSalary())
+                .append("\"\n}")
+                .append("\n}");
+        assertThat(engine.generate(em -> true), is(expect.toString()));
+    }
 }
