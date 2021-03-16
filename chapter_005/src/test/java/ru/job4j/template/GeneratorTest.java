@@ -39,11 +39,20 @@ public class GeneratorTest {
         String template = "I am ${name}. I am from ${subject}.";
         Map<String, String> map = new HashMap<>();
         map.put("name", "Ivan");
-        map.put("subject", "you");
         Generator generator = new TextGenerator();
         String result = generator.produce(template, map);
         String expected = "I am Ivan. Who are you?";
         assertThat(result, is(expected));
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void whenNotEnoughArgs() {
+        String template = "I am ${name}. Who are ${subject}?";
+        Map<String, String> map = new HashMap<>();
+        map.put("name", "Ivan");
+        Generator generator = new TextGenerator();
+        String result = generator.produce(template, map);
+        String expected = "I am Ivan. Who are you?";
+        assertThat(result, is(expected));
+    }
 }
