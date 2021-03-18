@@ -1,14 +1,14 @@
 package ru.job4j.parking;
 
+import java.util.List;
+
 public interface Parking {
 
-    void addCar(Car car);
+    void parking(Vehicle vehicle);
 
-    void addTruck(Truck truck);
+    boolean accept(Vehicle vehicle);
 
-    void addTruckToCarPlace(Truck truck, int carPlaces);
+    void remove(Vehicle vehicle);
 
-    void removeCar(Car car);
-
-    void removeTruck(Truck truck);
+    List<Vehicle> getVehicles();
 }
