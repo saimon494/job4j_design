@@ -1,5 +1,6 @@
 package ru.job4j.tdd;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -12,6 +13,7 @@ import static org.junit.Assert.*;
 
 public class CinemaTest {
 
+    @Ignore
     @Test
     public void whenFind() {
         Cinema cinema = new Cinema3D();
@@ -20,6 +22,7 @@ public class CinemaTest {
         assertThat(sessions, is(Arrays.asList(new Session3D())));
     }
 
+    @Ignore
     @Test
     public void whenNotFind() {
         Cinema cinema = new Cinema3D();
@@ -28,6 +31,7 @@ public class CinemaTest {
         assertThat(sessions, is(Collections.emptyList()));
     }
 
+    @Ignore
     @Test
     public void whenBuy() {
         Account account = new AccountCinema();

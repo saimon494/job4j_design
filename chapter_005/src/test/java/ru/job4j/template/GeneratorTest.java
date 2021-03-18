@@ -12,9 +12,9 @@ import static org.hamcrest.core.Is.is;
 
 public class GeneratorTest {
 
-    Map<String, String> map;
-    String template = "I am ${name}. Who are ${subject}?";
-    Generator generator;
+    private Map<String, String> map;
+    private String template = "I am ${name}. Who are ${subject}?";
+    private Generator generator;
 
     @Before
     public void init() {
