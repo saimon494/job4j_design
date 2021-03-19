@@ -5,8 +5,8 @@ import java.time.LocalDate;
 public class Food {
 
     private final String name;
-    private final LocalDate expiryDate;
-    private final LocalDate createDate;
+    private LocalDate expiryDate;
+    private LocalDate createDate;
     private double price;
     private double discount;
 
@@ -29,5 +29,13 @@ public class Food {
 
     public void setDiscount(double discount) {
         this.discount = discount;
+    }
+
+    public void setExpiryDate(LocalDate date) {
+        this.expiryDate = date;
+    }
+
+    public void setCreateDate(LocalDate date) {
+        this.createDate = date;
     }
 }

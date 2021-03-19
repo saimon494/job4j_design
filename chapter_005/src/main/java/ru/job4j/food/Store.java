@@ -12,6 +12,8 @@ public interface Store {
 
     List<Food> getAllFood();
 
+    List<Food> clear();
+
     default int expirationPercent(Food food) {
         long wholeExp = ChronoUnit.DAYS.between(food.getCreateDate(), food.getExpiryDate());
         long currentExp = ChronoUnit.DAYS.between(food.getCreateDate(), LocalDate.now());

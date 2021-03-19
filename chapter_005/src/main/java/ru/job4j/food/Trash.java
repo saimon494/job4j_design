@@ -25,4 +25,10 @@ public class Trash implements Store {
         return trash;
     }
 
+    @Override
+    public List<Food> clear() {
+        List<Food> newStore = new ArrayList<>(trash);
+        trash.clear();
+        return newStore;
+    }
 }

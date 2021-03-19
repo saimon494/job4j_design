@@ -31,4 +31,11 @@ public class Shop implements Store {
     public List<Food> getAllFood() {
         return shop;
     }
+
+    @Override
+    public List<Food> clear() {
+        List<Food> newStore = new ArrayList<>(shop);
+        shop.clear();
+        return newStore;
+    }
 }

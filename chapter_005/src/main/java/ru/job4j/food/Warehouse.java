@@ -25,4 +25,11 @@ public class Warehouse implements Store {
     public List<Food> getAllFood() {
         return warehouse;
     }
+
+    @Override
+    public List<Food> clear() {
+        List<Food> newStore = new ArrayList<>(warehouse);
+        warehouse.clear();
+        return newStore;
+    }
 }
