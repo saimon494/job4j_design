@@ -1,7 +1,6 @@
 package ru.job4j.parking;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.is;
@@ -9,9 +8,9 @@ import static org.junit.Assert.*;
 
 public class ParkingTest {
 
-    ParkingSpace parkingSpace;
-    CarParking carParking;
-    TruckParking truckParking;
+    private ParkingSpace parkingSpace;
+    private CarParking carParking;
+    private TruckParking truckParking;
 
     @Before
     public void init() {
@@ -20,7 +19,6 @@ public class ParkingTest {
         truckParking = new TruckParking(parkingSpace, 4);
     }
 
-    @Ignore
     @Test
     public void whenCarParkingAndLeaving() {
         Car car1 = new Car("Car1");
@@ -37,7 +35,6 @@ public class ParkingTest {
         assertThat(carParking.getVehicles().size(), is(1));
     }
 
-    @Ignore
     @Test
     public void whenCarPlaceIsFull() {
         carParking = new CarParking(parkingSpace, 2);
@@ -51,7 +48,6 @@ public class ParkingTest {
         assertFalse(carParking.accept(car3));
     }
 
-    @Ignore
     @Test
     public void whenTruckParkingFullAndLeaving() {
         Truck truck1 = new Truck("Truck1", 2);
@@ -62,7 +58,7 @@ public class ParkingTest {
         assertTrue(truckParking.accept(truck2));
         truckParking.parking(truck2);
         assertTrue(parkingSpace.contains(truck2));
-        assertThat(truckParking.getVehicles().size(), is(4));
+        assertThat(truckParking.getVehicles().size(), is(2));
         Truck truck3 = new Truck("Truck3", 2);
         assertFalse(truckParking.accept(truck3));
         truckParking.remove(truck1);
@@ -73,7 +69,6 @@ public class ParkingTest {
         assertTrue(carParking.accept(truck4));
     }
 
-    @Ignore
     @Test
     public void whenTruckParkingCarPlace() {
         Truck truck = new Truck("Truck", 2);
@@ -82,7 +77,6 @@ public class ParkingTest {
         assertTrue(parkingSpace.contains(truck));
     }
 
-    @Ignore
     @Test
     public void whenCarParkingTruckPlace() {
         Car car = new Car("Car");

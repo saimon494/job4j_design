@@ -23,6 +23,6 @@ public class ParkingSpaceImpl implements ParkingSpace {
 
     @Override
     public List<Vehicle> findAll() {
-        return List.copyOf(vehicles);
+        return vehicles;
     }
 }

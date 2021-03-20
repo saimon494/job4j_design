@@ -4,8 +4,8 @@ import java.util.List;
 
 public class CarParking implements Parking {
 
-    private ParkingSpace parkingSpace;
-    private int capacity;
+    private final ParkingSpace parkingSpace;
+    private final int capacity;
     private int count;
 
     public CarParking(ParkingSpace parkingSpace, int capacity) {
@@ -14,18 +14,23 @@ public class CarParking implements Parking {
     }
 
     @Override
-    public void parking(Vehicle car) {
-
+    public void parking(Vehicle vehicle) {
+        parkingSpace.add(vehicle);
+        count += vehicle.getSize();
     }
 
     @Override
-    public boolean accept(Vehicle car) {
-        return true;
+    public boolean accept(Vehicle vehicle) {
+        return (capacity - count - vehicle.getSize()) >= 0
+                && !parkingSpace.contains(vehicle);
     }
 
     @Override
-    public void remove(Vehicle car) {
-
+    public void remove(Vehicle vehicle) {
+        if (parkingSpace.contains(vehicle)) {
+            getVehicles().remove(vehicle);
+            count -= vehicle.getSize();
+        }
     }
 
     @Override
