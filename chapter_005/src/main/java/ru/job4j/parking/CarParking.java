@@ -15,6 +15,9 @@ public class CarParking implements Parking {
 
     @Override
     public void parking(Vehicle vehicle) {
+        if (!accept(vehicle)) {
+            throw new IllegalStateException("Невозможно припарковать лекговушку");
+        }
         parkingSpace.add(vehicle);
         count += vehicle.getSize();
     }

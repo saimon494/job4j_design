@@ -82,4 +82,11 @@ public class ParkingTest {
         Car car = new Car("Car");
         assertFalse(truckParking.accept(car));
     }
+
+    @Test (expected = IllegalStateException.class)
+    public void whenTruckParkThenException() {
+        carParking = new CarParking(parkingSpace, 0);
+        Car car = new Car("Car");
+        carParking.parking(car);
+    }
 }

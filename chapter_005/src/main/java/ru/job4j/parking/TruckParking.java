@@ -14,9 +14,12 @@ public class TruckParking implements Parking {
     }
 
     @Override
-    public void parking(Vehicle truck) {
-        parkingSpace.add(truck);
-        count += truck.getSize();
+    public void parking(Vehicle vehicle) {
+        if (!accept(vehicle)) {
+            throw new IllegalStateException("Невозможно припарковать грузовик");
+        }
+        parkingSpace.add(vehicle);
+        count += vehicle.getSize();
     }
 
     @Override
