@@ -32,7 +32,7 @@ public class ControlQualityTest {
         fish = new Fish("Fish", expiryDate, createDate, 500, 0);
     }
 
-    //@Ignore
+    @Ignore
     @Test
     public void whenBreadInWarehouse() {
         bread.setExpiryDate(LocalDate.parse("2021-03-21"));
@@ -59,6 +59,7 @@ public class ControlQualityTest {
         assertThat(store.get(2).getAllFood().get(0), is(fish));
     }
 
+    @Ignore
     @Test
     public void whenResort() {
         bread.setExpiryDate(LocalDate.parse("2021-03-27"));
