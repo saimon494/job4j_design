@@ -26,11 +26,12 @@ public class MenuTest {
         String rsl = menu.print();
 
         StringBuilder expected = new StringBuilder()
-        .append("Задача 1.\r\n").append("----Задача 1.1.\r\n")
-                .append("--------Задача 1.1.1.\r\n")
-                .append("----Задача 1.2.\r\n")
-                .append("--------Задача 1.2.1.\r\n")
-                .append("Задача 2.\r\n");
+                .append("Задача 1.").append(System.lineSeparator())
+                .append("----Задача 1.1.").append(System.lineSeparator())
+                .append("--------Задача 1.1.1.").append(System.lineSeparator())
+                .append("----Задача 1.2.").append(System.lineSeparator())
+                .append("--------Задача 1.2.1.").append(System.lineSeparator())
+                .append("Задача 2.").append(System.lineSeparator());
         System.out.println(expected);
         assertThat(rsl, is(expected.toString()));
     }
