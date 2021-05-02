@@ -23,11 +23,9 @@ before_script:
 # Отправлять уведомление на почту youremail@smtp.ru(Изменить на свою) если сборка упала
 notifications:
   email:
-    recipients:
-      - saimon494@outlook.com
     on_success: never # default: change
     on_failure: always # default: always
 
 env:
   global:
-    - CODECOV_TOKEN="1857b31a-0cc7-46c3-b7b2-50049a626c59"
+    - CODECOV_TOKEN="d2074a9a-36b3-446e-9743-cc9186daa5bc"
