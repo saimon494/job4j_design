@@ -41,7 +41,7 @@ public class ControlQualityTest {
         assertThat(store.get(0).getAllFood().get(0), is(bread));
     }
 
-    //@Ignore
+    @Ignore
     @Test
     public void whenMeatInShop() {
         meat.setExpiryDate(LocalDate.parse("2021-04-20"));
